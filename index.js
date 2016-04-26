@@ -15,12 +15,14 @@ var getNameAndVersion = function(packagejsonfie, cb1, cb2) {
 				cb2('Error in parsing package.json '+ err);
 			}
 			if(p.version) {
+				GLOBAL.DEVOPS_APP_VERSION = p.version;
 				cb1(p.version);
 			}
 			else {
 				cb1('Cannot find version info from package.json');
 			}
 			if(p.name) {
+				GLOBAL.DEVOPS_APP_NAME = p.name;
 				cb2(p.name + ' is running.');
 			}
 			else {

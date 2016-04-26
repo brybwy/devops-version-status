@@ -8,7 +8,8 @@ describe('test \'/status\' and \'/version\'', function() {
 		var res = {},req={},next={};
 		res.write = function(str) {
 			if(testing == '/version') {
-				expect(str).to.equal('1.0.0');
+				expect(str).to.contain('1.0');
+				expect(GLOBAL.DEVOPS_APP_VERSION).to.contain('1.0');
 				done()
 			}
 		};
@@ -26,6 +27,7 @@ describe('test \'/status\' and \'/version\'', function() {
 		res.write = function(str) {
 			if(testing == '/status') {
 				expect(str).to.equal('devops-version-status is running.');
+				expect(GLOBAL.DEVOPS_APP_NAME).to.equal('devops-version-status');
 				done();
 			}
 		};
